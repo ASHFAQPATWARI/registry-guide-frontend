@@ -9,7 +9,7 @@ import { IGuideDetails } from "@/types";
 export const fetchGuideByUrl = async (url: string): Promise<IGuideDetails> => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}${endpoints.guides.index}/${url}`
+      `https://nestjs-authentication-sigma.vercel.app${endpoints.guides.index}/${url}`
     );
 
     if (!response.ok) {
