@@ -1,9 +1,10 @@
+import { GuideDetailPageParams } from "@/types";
 import LandingDetail from "./components/LandingDetail";
 
-function GuidesDetail({ guideUrl }: any) {
+function GuidesDetail({ detail }: GuideDetailPageParams) {
   return (
     <div>
-      <LandingDetail guideUrl={guideUrl} />
+      <LandingDetail detail={detail} />
     </div>
   );
 }

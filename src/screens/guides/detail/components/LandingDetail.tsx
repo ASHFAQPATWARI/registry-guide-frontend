@@ -1,7 +1,8 @@
-import { fetchGuide } from "@/services/guides.service";
+import { fetchGuideByUrl } from "@/services/guides.service";
+import { GuideDetailPageParams } from "@/types";
 
-async function LandingDetail({ guideUrl }: any) {
-  const guide = await fetchGuide(guideUrl);
+async function LandingDetail({ detail }: GuideDetailPageParams) {
+  const guide = await fetchGuideByUrl(detail);
 
   return (
     <div className="max-w-4xl text-center mx-auto px-4 py-6 bg-white shadow-lg rounded-lg">

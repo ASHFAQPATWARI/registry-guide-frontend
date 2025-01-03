@@ -1,3 +1,5 @@
+import { PageProps } from "../../.next/types/app/layout";
+
 export enum EGuideStatus {
   DRAFT = "Draft",
   SUBMITTED = "Submitted",
@@ -29,4 +31,13 @@ export interface IGuide {
 export interface IGuideDetails extends IGuide {
   descriptionEn: string;
   descriptionAr: string;
+}
+
+export interface GuideDetailPageParams {
+  detail: string; // Ensure this matches what Next.js expects
+}
+
+// Update GuideDetailPageProps to reflect params as a Promise
+export interface GuideDetailPageProps extends PageProps {
+  params: Promise<GuideDetailPageParams>; // Change here
 }
