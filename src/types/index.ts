@@ -34,10 +34,9 @@ export interface IGuideDetails extends IGuide {
 }
 
 export interface GuideDetailPageParams {
-  detail: string; // Ensure this matches what Next.js expects
+  detail: string;
 }
 
-// Update GuideDetailPageProps to reflect params as a Promise
 export interface GuideDetailPageProps extends PageProps {
-  params: Promise<GuideDetailPageParams>; // Change here
+  params: Promise<GuideDetailPageParams>;
 }
