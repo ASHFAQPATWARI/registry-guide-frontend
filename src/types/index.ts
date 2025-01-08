@@ -1,5 +1,3 @@
-import { PageProps } from "../../.next/types/app/layout";
-
 export enum EGuideStatus {
   DRAFT = "Draft",
   SUBMITTED = "Submitted",
@@ -31,12 +29,4 @@ export interface IGuide {
 export interface IGuideDetails extends IGuide {
   descriptionEn: string;
   descriptionAr: string;
-}
-
-export interface GuideDetailPageParams {
-  detail: string;
-}
-
-export interface GuideDetailPageProps extends PageProps {
-  params: Promise<GuideDetailPageParams>;
 }
