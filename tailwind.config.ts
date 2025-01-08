@@ -8,9 +8,26 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        primary: "var(--font-primary), sans-serif",
+        secondary: "var(--font-secondary), sans-serif",
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          md: "4rem",
+          lg: "6rem",
+          xl: "8rem",
+        },
+        screens: {
+          sm: "100%",
+          md: "720px",
+          lg: "960px",
+          xl: "1140px",
+          "2xl": "1320px",
+        },
       },
     },
   },
