@@ -26,12 +26,17 @@ export async function generateMetadata(): Promise<Metadata> {
   const pageUrl = nextHeaders.get("x-url") || "/";
   const split = pageUrl.split("/");
   const guideUrl = split[split.length - 1];
-  
-  const guide = await fetchGuide(guideUrl);
+  let guide = {
+    name: "Noor Registry Guides",
+    description: "Noor Registry Guides",
+  };
+  if (guideUrl) {
+    guide = await fetchGuide(guideUrl);
+  }
 
   return {
-    title: guide.name || "Noor Registry Guide",
-    description: guide.description || "Noor Registry Guide",
+    title: guide.name,
+    description: guide.description,
   };
 }
 
