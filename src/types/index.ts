@@ -6,27 +6,30 @@ export enum EGuideStatus {
 
 export interface IGuide {
   id: string;
-  nameEn: string;
-  nameAr: string;
-  descriptionEn: string;
-  descriptionAr: string;
-  url?: string,
+  name: string;
+  description: string;
+  url?: string;
   bannerImage: string;
-  authorId: string;
-  categoryId: string;
   status: EGuideStatus;
+  publishedAt: string;
+  updatedAt: string;
   isActive: boolean;
+  content: string;
   category: {
     id: string;
     name: string;
+    parent: {
+      id: string;
+      name: string;
+    };
   };
   author: {
     id: string;
     name: string;
+    image: string;
   };
 }
 
 export interface IGuideDetails extends IGuide {
-  descriptionEn: string;
-  descriptionAr: string;
+  description: string;
 }

@@ -1,16 +1,26 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: [
-    "./src/screens/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontFamily: {
-        primary: "var(--font-primary), sans-serif",
-        secondary: "var(--font-secondary), sans-serif",
+        sans: ["var(--font-primary)", "var(--font-secondary)"],
+      },
+      colors: {
+        primary: {
+          50: "var(--primary-50)",
+          100: "var(--primary-100)",
+          200: "var(--primary-200)",
+          300: "var(--primary-300)",
+          400: "var(--primary-400)",
+          500: "var(--primary-500)",
+          600: "var(--primary-600)",
+          700: "var(--primary-700)",
+          800: "var(--primary-800)",
+          900: "var(--primary-900)",
+          DEFAULT: "var(--primary)",
+        },
       },
       container: {
         center: true,
@@ -21,13 +31,6 @@ export default {
           lg: "4rem",
           xl: "6rem",
           "2xl": "6rem",
-        },
-        screens: {
-          sm: "100%",
-          md: "720px",
-          lg: "960px",
-          xl: "1140px",
-          "2xl": "1320px",
         },
       },
     },

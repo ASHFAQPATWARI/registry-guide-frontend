@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${primaryFont.variable} ${secondaryFont.variable} antialiased font-primary container m-auto`}
+        className={`${primaryFont.variable} ${secondaryFont.variable} antialiased font-sans container m-auto`}
       >
         {children}
       </body>

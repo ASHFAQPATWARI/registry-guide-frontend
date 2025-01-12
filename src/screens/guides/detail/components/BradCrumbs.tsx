@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function BradCrumbs({category}: any) {
   const breadcrumbs = [
     { label: "Guides", href: "#" },
-    { label: category?.parent?.nameEn, href: "#" },
-    { label: category?.nameEn, href: "#" },
+    { label: category?.parent?.name, href: "#" },
+    { label: category?.name, href: "#" },
   ];
   return (
     <div className="hidden lg:block">
@@ -15,14 +15,14 @@ export default function BradCrumbs({category}: any) {
             <Link
               className={`$px-1 text-xs ${
                 index !== breadcrumbs.length - 1
-                  ? "text-[#b2aeb0]"
-                  : "text-[#6b6669]"
+                  ? "text-gray-400"
+                  : "text-gray-600"
               }`}
               href={breadcrumb?.href}
             >
               {breadcrumb?.label}
             </Link>
-            <span className="px-3 text-xs text-[#b2aeb0]">{">"}</span>
+            <span className="px-3 text-xs text-gray-400">{">"}</span>
           </li>
         ))}
       </ul>
