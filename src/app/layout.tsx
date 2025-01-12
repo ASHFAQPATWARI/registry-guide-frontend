@@ -26,7 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const pageUrl = nextHeaders.get("x-url") || "/";
   const split = pageUrl.split("/");
   const guideUrl = split[split.length - 1];
-  console.log('guideUrl', guideUrl);
   
   const guide = await fetchGuide(guideUrl);
 
