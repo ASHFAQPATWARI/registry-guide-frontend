@@ -29,6 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   let guide = {
     name: "Noor Registry Guides",
     description: "Noor Registry Guides",
+    bannerImage: "/",
   };
   if (guideUrl) {
     guide = await fetchGuide(guideUrl);
@@ -37,6 +38,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: guide.name,
     description: guide.description,
+    openGraph: {
+      images: {
+        url: `${process.env.NEXT_PUBLIC_ASSET_URL}${guide.bannerImage}`,
+      },
+    },
   };
 }
 
