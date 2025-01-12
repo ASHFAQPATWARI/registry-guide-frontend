@@ -59,8 +59,8 @@ export async function getGuideHtml(content: any) {
 
         const listTag = isUnordered ? "ul" : "ol";
         const listClass = isUnordered
-          ? "list-disc list-inside pl-5 space-y-1 text-gray-600"
-          : "list-decimal list-inside pl-5 space-y-1 text-gray-600";
+          ? "list-disc list-inside pl-5 rtl:ps-5 space-y-1 text-gray-600"
+          : "list-decimal list-inside pl-5 rtl:ps-5 space-y-1 text-gray-600";
 
         currentHTML += `<${listTag} class="${listClass}">
                           ${listItems}
@@ -164,7 +164,7 @@ export function extractIds(jsonData: any) {
 
 function getStoreHtml(storeData: any) {
   return `
-        <div>
+        <div class="my-5">
           <div class="items-center bg-gray-50 rounded-lg shadow sm:flex">
               <a href="#">
                   <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="${process.env.NEXT_PUBLIC_ASSET_URL}${storeData?.storeLogo}" alt="Bonnie Avatar">
@@ -182,7 +182,7 @@ function getStoreHtml(storeData: any) {
 
 function getProductHtml(productData: any) {
   return `
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+  <div class="w-full my-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow">
     <a href="#">
         <img class="p-8 rounded-t-lg" src="${
           process.env.NEXT_PUBLIC_ASSET_URL

@@ -6,8 +6,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
-
-import i18next from "i18next";
+import { headers as nextHeaders } from "next/headers";
 
 enum StatusCode {
   Unauthorized = 401,
@@ -26,10 +25,12 @@ const headers: Readonly<Record<string, string | boolean>> = {
 };
 
 const injectToken = async (
-  config: InternalAxiosRequestConfig,
+  config: InternalAxiosRequestConfig
 ): Promise<InternalAxiosRequestConfig> => {
   try {
-    config.headers["Accept-Language"] = i18next.language ?? "en";
+    const headers = await nextHeaders();
+    const language = headers.get("Accept-Language");
+    config.headers["Accept-Language"] = language ?? "en";
     return config;
   } catch (error) {
     throw new Error(`Error getting access token ${error}`);
@@ -50,14 +51,14 @@ class Http {
     });
 
     http.interceptors.request.use(injectToken, (error) =>
-      Promise.reject(error),
+      Promise.reject(error)
     );
 
     http.interceptors.response.use(
       (response) => response,
       (error) => {
         return this.handleError(error);
-      },
+      }
     );
 
     this.instance = http;
@@ -70,7 +71,7 @@ class Http {
 
   get<TResponse = any>(
     url: string,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     return this.handleRequest(this.http.get<TResponse>(url, config));
   }
@@ -78,7 +79,7 @@ class Http {
   post<TResponse = any, TRequestBody = any>(
     url: string,
     data?: TRequestBody,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     return this.handleRequest(this.http.post<TResponse>(url, data, config));
   }
@@ -86,7 +87,7 @@ class Http {
   put<TResponse = any, TRequestBody = any>(
     url: string,
     data?: TRequestBody,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     return this.handleRequest(this.http.put<TResponse>(url, data, config));
   }
@@ -94,14 +95,14 @@ class Http {
   patch<TResponse = any, TRequestBody = any>(
     url: string,
     data?: TRequestBody,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     return this.handleRequest(this.http.patch<TResponse>(url, data, config));
   }
 
   delete<TResponse = any>(
     url: string,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     return this.handleRequest(this.http.delete<TResponse>(url, config));
   }
@@ -144,11 +145,11 @@ class Http {
   }
 
   private async handleRequest<T>(
-    request: Promise<AxiosResponse<T>>,
+    request: Promise<AxiosResponse<T>>
   ): Promise<T> {
     try {
       const response = await request;
-      
+
       return response.data;
     } catch (error) {
       handleApiError(error as unknown as IApiError);

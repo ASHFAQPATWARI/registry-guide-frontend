@@ -15,7 +15,7 @@ async function HeroSection({ guide }: any) {
             className="aspect-[3/2] md:h-[32rem] lg:h-[28rem]"
           />
         </div>
-        <div className="bg-white md:shadow-md h-fit md:-ml-32 ml-0 md:mt-6 mt-0 md:w-80 md:p-7 lg:w-[38rem]">
+        <div className="bg-white md:shadow-md h-fit rtl:md:-ms-32 md:-ml-32 ml-0 md:mt-6 mt-0 md:w-80 md:p-7 lg:w-[38rem]">
           <BradCrumbs category={guide?.category} />
           <h1 className="lg:pb-1 pb-3 text-gray-900 text-3xl font-medium m-0">
             {guide?.name}
