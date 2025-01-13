@@ -2,7 +2,7 @@ import Image from "next/image";
 import BradCrumbs from "./BradCrumbs";
 import AuthorInfo from "./AuthorInfo";
 
-async function HeroSection({ guide }: any) {
+async function HeroSection({ guide, lang }: any) {
   return (
     <>
       <div className="flex md:flex-row flex-col-reverse mx-auto py-11">
@@ -16,7 +16,7 @@ async function HeroSection({ guide }: any) {
           />
         </div>
         <div className="bg-white md:shadow-md h-fit rtl:md:-ms-32 md:-ml-32 ml-0 md:mt-6 mt-0 md:w-80 md:p-7 lg:w-[38rem]">
-          <BradCrumbs category={guide?.category} />
+          <BradCrumbs category={guide?.category} lang={lang} />
           <h1 className="lg:pb-1 pb-3 text-gray-900 text-3xl font-medium m-0">
             {guide?.name}
           </h1>
@@ -27,6 +27,7 @@ async function HeroSection({ guide }: any) {
             publishedAt={guide?.publishedAt}
             updatedAt={guide?.updatedAt}
             author={guide.author}
+            lang={lang}
           />          
         </div>
       </div>

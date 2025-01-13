@@ -3,16 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/utils/helper";
 import translation from "@/locales/translation";
-import { headers } from "next/headers";
 
 export default async function AuthorInfo({
   publishedAt,
   updatedAt,
   author,
+  lang,
 }: any) {
   const heroSection = translation?.heroSection;
-  const headerList = await headers();
-  const lang = headerList.get("Accept-Language");
 
   return (
     <>

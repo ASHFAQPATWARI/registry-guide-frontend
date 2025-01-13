@@ -1,9 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import translation from "@/locales/translation";
 
-export default function BradCrumbs({category}: any) {
+export default function BradCrumbs({ category, lang }: any) {
+  const heroSection = translation?.heroSection;
   const breadcrumbs = [
-    { label: "Guides", href: "#" },
+    {
+      label: lang == 'en' ? heroSection.guidesEn : heroSection.guidesAr,
+      href: "#",
+    },
     { label: category?.parent?.name, href: "#" },
     { label: category?.name, href: "#" },
   ];
