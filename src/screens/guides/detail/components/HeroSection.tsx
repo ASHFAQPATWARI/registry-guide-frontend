@@ -27,13 +27,7 @@ async function HeroSection({ guide }: any) {
             publishedAt={guide?.publishedAt}
             updatedAt={guide?.updatedAt}
             author={guide.author}
-          />
-          <div className="flex mb-5 justify-start bg-[#fafafa] rounded-xl">
-            <span className="text-gray-600 text-xs py-2 px-4 m-0">
-              Our editors independently test and curate products. If you make a
-              purchase via our links we may earn a commission.
-            </span>
-          </div>
+          />          
         </div>
       </div>
     </>
