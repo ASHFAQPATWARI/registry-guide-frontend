@@ -225,3 +225,6 @@ export function formatPrice(price: number = 0, currencyCode?: string): string {
     return `${currencyCode} ${price.toFixed(2)}`;
   }
 }
+
+// Helper to get localized field
+export const getField = (en: string, ar: string, lang: string) => lang === "ar" ? ar : en;

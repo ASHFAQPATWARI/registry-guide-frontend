@@ -33,3 +33,35 @@ export interface IGuide {
 export interface IGuideDetails extends IGuide {
   description: string;
 }
+
+export interface IStoreProductImage {
+  id: string;
+  path: string;
+}
+
+export interface IStoreProduct {
+  id: string;
+  nameAr: string;
+  nameEn: string;
+  price: number;
+  currencyCode: string;
+  images: IStoreProductImage[];
+}
+
+export interface IStoreDetails {
+  id: string;
+  nameEn: string;
+  nameAr: string;
+  descriptionAr: string;
+  descriptionEn: string;
+  storeLogo: string;
+  slug: string;
+  products: IStoreProduct[];
+}
+
+export interface IStorePageProps {
+  store: IStoreDetails;
+  lang: string;
+  imagePrefix: string;
+}
+
