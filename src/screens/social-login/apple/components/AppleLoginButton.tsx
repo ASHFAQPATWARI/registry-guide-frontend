@@ -5,19 +5,25 @@ const APPLE_CLIENT_ID = process.env.NEXT_PUBLIC_APPLE_CLIENT_ID;
 const APPLE_REDIRECT_URI = process.env.NEXT_PUBLIC_APPLE_REDIRECT_URI || '';
 
 function appleLogin() {
-    const url = `https://appleid.apple.com/auth/authorize?response_type=code&response_mode=form_post&client_id=${APPLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(APPLE_REDIRECT_URI)}&scope=name%20email`;
+    const url = `https://appleid.apple.com/auth/authorize?` +
+        `response_type=id_token&` +
+        `response_mode=fragment&` +
+        `client_id=${APPLE_CLIENT_ID}&` +
+        `redirect_uri=${encodeURIComponent(APPLE_REDIRECT_URI)}&` +
+        `scope=name%20email&` +
+        `state=SOME_RANDOM_STRING`;
     window.location.href = url;
 }
 
 const AppleLoginButton = () => {
     useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get("code");
-        if (code) {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const idToken = hashParams.get("id_token");
+        if (idToken) {
             fetch("http://localhost:3050/v1/api/users/auth/apple", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ idToken: code, deviceName: "Iphone", devicePlatform: "App", osVersion: "v1.2.3" }),
+                body: JSON.stringify({ idToken, deviceName: "Iphone", devicePlatform: "App", osVersion: "v1.2.3" }),
             })
                 .then((res) => res.json())
                 .then((data) => {
