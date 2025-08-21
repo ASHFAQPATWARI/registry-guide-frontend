@@ -1,6 +1,5 @@
 import AppleLoginButton from "@/screens/social-login/apple/components/AppleLoginButton";
 import React from "react";
-import { fetchLoginTokens } from "@/services/socialLogin.service";
 
 async function AppleLogin() {
     return (
