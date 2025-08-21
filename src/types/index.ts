@@ -65,3 +65,14 @@ export interface IStorePageProps {
   imagePrefix: string;
 }
 
+export interface IAppleLoginResponse {
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface IAppleLoginRequest {
+  idToken: string;
+  deviceName: string;
+  devicePlatform: string;
+  osVersion: string;
+}

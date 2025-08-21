@@ -4,6 +4,9 @@ const endpoints = {
   },
   stores: {
     index: "/v1/api/users/store/view",
+  },
+  login: {
+    index: "/v1/api/users/auth/",
   }
 };
 
